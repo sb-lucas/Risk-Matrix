@@ -39,7 +39,7 @@ class Matrix:
 
             Output:
             '''
-        return self.generatorXY(description,input1)
+        return self.__generatorXY(description,input1)
 
     def getFrequency(self,description):
         input2 = '''
@@ -55,4 +55,4 @@ class Matrix:
 
             Output:
             '''
-        return self.generatorXY(description,input2)
+        return self.__generatorXY(description,input2)
