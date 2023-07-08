@@ -8,23 +8,20 @@ class Matrix:
         subprocess.check_call([sys.executable, "-m", "pip", "install", "transformers"])
         from transformers import pipeline
         self.generator = pipeline('text-generation', model='facebook/opt-iml-max-1.3b', device=0)
-
-    def printar(self):
-        print("oi")
     
-    def geradorXY(self,description,input):
+    def __generatorXY(self,description,input):
         max_len = 1000
 
         if(len(description)<max_len):
             max_len = len(description)-1
 
-        prompt = description[0:max_len] + input #concatena
+        prompt = description[0:max_len] + input #concats
 
-        result = self.generator(prompt,max_length=1000)#inicializa
-        output = result[0]['generated_text']#gera texto
+        result = self.generator(prompt,max_length=1000)#initializes
+        output = result[0]['generated_text']#generates text
 
-        words = output.split()#divide o texto em palavras
-        answer = words[-1]#escolhe apenas a ultima
+        words = output.split()#splits the text into words
+        answer = words[-1]#chooses the last word
         
         return answer
     
@@ -42,7 +39,7 @@ class Matrix:
 
             Output:
             '''
-        return self.geradorXY(description,input1)
+        return self.generatorXY(description,input1)
 
     def getFrequency(self,description):
         input2 = '''
@@ -58,4 +55,4 @@ class Matrix:
 
             Output:
             '''
-        return self.geradorXY(description,input2)
+        return self.generatorXY(description,input2)
